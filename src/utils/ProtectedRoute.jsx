@@ -9,5 +9,6 @@ export const ProtectedRoute = ({ children }) => {
   if (location.state ===null) {
     return <Navigate to="/register" state={{ from: location }} replace ></Navigate>
   }
+  
   return children;
 };
