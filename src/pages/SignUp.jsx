@@ -39,12 +39,14 @@ const sendData = async (body) => {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      const error=await response.json();
+      throw new Error(`HTTP error! Status: ${response.status} Message : ${error.message}`);
     }
 
     const responseData = await response.json();
     setData(responseData);
   } catch (error) {
+    console.log(error);
     setShowAlert(true);
     setErrorMsg(error.message);
     setData(null);
